@@ -1,6 +1,6 @@
-## Notes
+# Notes
 
-# VIM Color Schemes
+## VIM Color Schemes
 Download BadWolf Vim color scheme from:  
 https://raw.githubusercontent.com/sjl/badwolf/master/colors/badwolf.vim
 
