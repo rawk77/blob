@@ -1,4 +1,4 @@
-# blob
+## Notes
 
 # VIM Color Schemes
 Download BadWolf Vim color scheme from:  
