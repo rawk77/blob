@@ -12,10 +12,12 @@
 `Prefix + s` - Send window to different pane  
 
 `Prefix + [` - Enter Copy Mode  
+```
     `/` - Search  
         `n` - Find next  
         `Shift - n` - Find previous    
-    `Space` - Highlight mode  
+    `Space` - Highlight mode
+```  
 `Prefix + ]` - Paste from buffer  
 `Prefix + %` - Horizontal Split  
 `Prefix + "` - Vertical Split  
