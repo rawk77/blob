@@ -5,5 +5,5 @@ Exec=Obsidian --no-sandbox
 Icon=Obsidian.png
 StartupNotify=false
 Terminal=false
-Type=Applicationparanoi
-Categories=12-reporting;Accessories
+Type=Application
+Categories=GTK;Utility;TextEditor;
