@@ -19,7 +19,11 @@ chmod +x ~/.local/bin/Obsidian
 curl https://github.com/rawk77/blob/raw/master/Obsidian.png -o ~/.local/icons/Obsidian.png
 curl https://raw.githubusercontent.com/rawk77/blob/master/Obsidian.desktop -o ~/.local/share/applications/Obsidian.desktop
 
-# Setup .files
+# Setup dotfiles
+echo 'Downloading configuration files'
 curl https://raw.githubusercontent.com/rawk77/blob/master/gdbinit -o ~/.gdbinit
 curl https://raw.githubusercontent.com/rawk77/blob/master/tmux.conf -o ~/.tmux.conf
 curl https://raw.githubusercontent.com/rawk77/blob/master/vimrc -o ~/.vimrc
+curl https://raw.githubusercontent.com/rawk77/blob/master/vpnpanel.sh -o ~/.local/vpnpanel.sh
+chmod +x ~/.local/vpnpanel.sh
+
