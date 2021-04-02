@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Obsidian
 Encoding=UTF-8
-Exec=Obsidian
+Exec=Obsidian --no-sandbox
 Icon=Obsidian.png
 StartupNotify=false
 Terminal=false
