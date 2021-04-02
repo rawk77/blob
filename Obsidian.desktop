@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Obsidian
+Encoding=UTF-8
+Exec=Obsidian
+Icon=Obsidian.png
+StartupNotify=false
+Terminal=false
+Type=Applicationparanoi
+Categories=12-reporting;Accessories
