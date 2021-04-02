@@ -8,10 +8,10 @@ echo ' |_| \_\__,_| \_/\_/ |_|\_\ '
 echo ' '
 echo '======= Setup Script ========'
 
-# Create required Directories
-mkdir ~/.local/bin
-mkdir ~/.local/icons
-mkdir -p ~/.local/share/applications
+# Create required Directories if they don't exist
+if [ -d ~/.local/bin ]; then echo ".local/bin Exists"; else mkdir ~/.local/bin; fi
+if [ -d ~/.local/icons ]; then echo ".local/icons"; else mkdir ~/.local/icons; fi
+if [ -d ~/.local/share/applications ]; then echo ".local/share/applications Exists"; else mkdir -p ~/.local/share/applications; fi
 
 # Setup Obsidian
 curl https://github.com/obsidianmd/obsidian-releases/releases/download/v0.11.9/Obsidian-0.11.9.AppImage -o ~/.local/bin/Obsidian
