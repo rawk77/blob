@@ -1,5 +1,4 @@
 syntax enable
-colorscheme badwolf
 set background=dark
 set number
 
