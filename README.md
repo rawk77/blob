@@ -1,3 +1,8 @@
+# Setup
+
+To setup a new Linux install, run:  
+`curl -s https://raw.githubusercontent.com/rawk77/blob/master/setup.sh | bash`
+
 # Terminal Cheatsheet
 
 `Ctrl + r` - Recursive search through history  
