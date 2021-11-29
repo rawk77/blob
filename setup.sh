@@ -8,8 +8,13 @@ echo ' |_| \_\__,_| \_/\_/ |_|\_\ '
 echo ' '
 echo '======= Setup Script ========'
 
+# Install Programs
+echo "[+] Installing Terminator"
+sudo apt install terminator -y
+
 # Create required Directories if they don't exist
 if [ -d ~/.vim/colors ]; then echo "[+] .vim/colors Exists"; else mkdir -p ~/.vim/colors; fi
+if [ -d ~/.config/terminator ]; then echo "[+] .config/terminator"; else mkdir -p ~/.config/terminator; fi
 
 # Setup dotfiles
 echo 'Downloading configuration files'
