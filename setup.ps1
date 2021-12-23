@@ -32,6 +32,10 @@ if (Test-Path -Path $ProfileFolder) {
 }
 iwr -UseBasicParsing -uri https://raw.githubusercontent.com/rawk77/blob/master/Microsoft.PowerShell_profile.ps1 -OutFile $PROFILE
 
+# Add Windows Terminal Profile
+$WTProfileFolder = "~\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
+iwr -UseBasicParsing -uri https://raw.githubusercontent.com/rawk77/blob/master/settings.json -OutFile $WTProfileFolder
+
 # WinGet Installs
 # Need to add checks to see if these are already installed
 #winget install -e --id Git.Git
