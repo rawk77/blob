@@ -7,6 +7,17 @@ set shiftwidth=4
 set softtabstop=4
 set encoding=UTF-8
 set laststatus=2
+set smartindent
+
+set relativenumber
+set nu
+set hidden
+set noerrorbells
+set incsearch
+set scrolloff=8
+set complete+=kspell
+set completeopt=menuone,longest
+set shortmess+=c
 
 " Quality of Life Stuff
 command! Reload execute "source ~/.vimrc"
@@ -29,5 +40,10 @@ call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'itchyny/lightline.vim'
+Plug 'vim-scripts/AutoComplPop'
 
 call plug#end()
+
+let mapleader = " "
+" Remove all trailing whitespace by presing <space>tr
+nnoremap <leader>tr :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
