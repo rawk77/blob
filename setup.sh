@@ -22,6 +22,7 @@ curl -s https://raw.githubusercontent.com/rawk77/blob/master/gdbinit -o ~/.gdbin
 curl -s https://raw.githubusercontent.com/rawk77/blob/master/tmux.conf -o ~/.tmux.conf
 curl -s https://raw.githubusercontent.com/rawk77/blob/master/vimrc -o ~/.vimrc
 curl -s https://raw.githubusercontent.com/rawk77/blob/master/vpnpanel.sh -o ~/.local/vpnpanel.sh
+wget -q https://github.com/rawk77/blob/raw/master/.config/qterminal.org/qterminal.ini -P ~/.config/qterminal.org/
 chmod +x ~/.local/vpnpanel.sh
 
 # Vim Color Schemes
@@ -30,6 +31,12 @@ curl https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/c
 
 # Vim-Plug Install
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Install Fonts
+wget -q https://github.com/rawk77/blob/raw/master/fonts/Hack-Bold.ttf -P ~/.local/share/fonts/
+wget -q https://github.com/rawk77/blob/raw/master/fonts/Hack-BoldItalic.ttf -P ~/.local/share/fonts/
+wget -q https://github.com/rawk77/blob/raw/master/fonts/Hack-Regular.ttf -P ~/.local/share/fonts/
+sudo fc-cache -fv
 
 # Install Microsoft Fonts
 sudo apt install ttf-mscorefonts-installer
