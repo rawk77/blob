@@ -9,28 +9,29 @@ echo ' '
 echo '======= Setup Script ========'
 
 # Install Programs
-#echo "[+] Installing Terminator"
-#sudo apt install terminator -y
+echo "[+] Installing Neovim"
+sudo apt install neovim
 
-# Create required Directories if they don't exist
-if [ -d ~/.vim/colors ]; then echo "[+] .vim/colors Exists"; else mkdir -p ~/.vim/colors; fi
-if [ -d ~/.config/terminator ]; then echo "[+] .config/terminator"; else mkdir -p ~/.config/terminator; fi
+echo "[+] Setting up Neovim"
+echo "[*] Creating Neovim directories"
+if [ -d ~/.config/nvim ]; then echo "[*] .config/nvim Exists"; else mkdir -p ~/.config/nvim; fi
+if [ -d ~/.config/nvim/lua ]; then echo "[*] .config/nvim/lua Exists"; else mkdir -p ~/.config/nvim/lua; fi
+if [ -d ~/.config/nvim/plugin ]; then echo "[*] .config/nvim/plugin Exists"; else mkdir -p ~/.config/nvim/plugin; fi
+
+# Install Packer for plugins
+git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+# Download the init.lua config file
+curl -s https://raw.githubusercontent.com/rawk77/blob/master/neovim/init.lua -o ~/.config/nvim/init.lua
+echo "alias vim=nvim" >> ~/.zshrc
+source ~/.zshrc
 
 # Setup dotfiles
-echo 'Downloading configuration files'
+echo '[*] Downloading configuration files'
 curl -q -s https://raw.githubusercontent.com/rawk77/blob/master/gdbinit -o ~/.gdbinit
 curl -q -s https://raw.githubusercontent.com/rawk77/blob/master/tmux.conf -o ~/.tmux.conf
-curl -q -s https://raw.githubusercontent.com/rawk77/blob/master/vimrc -o ~/.vimrc
-curl --q s https://raw.githubusercontent.com/rawk77/blob/master/vpnpanel.sh -o ~/.local/vpnpanel.sh
-wget -q https://github.com/rawk77/blob/raw/master/.config/qterminal.org/qterminal.ini -P ~/.config/qterminal.org/
+curl -q -s https://raw.githubusercontent.com/rawk77/blob/master/vpnpanel.sh -o ~/.local/vpnpanel.sh
 chmod +x ~/.local/vpnpanel.sh
-
-# Vim Color Schemes
-curl -q https://raw.githubusercontent.com/sjl/badwolf/master/colors/badwolf.vim -o ~/.vim/colors/badwolf.vim
-curl -q https://raw.githubusercontent.com/altercation/vim-colors-solarized/master/colors/solarized.vim -o ~/.vim/colors/solarized.vim
-
-# Vim-Plug Install
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install Fonts
 wget -q https://github.com/rawk77/blob/raw/master/fonts/Hack-Bold.ttf -P ~/.local/share/fonts/
