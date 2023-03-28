@@ -79,7 +79,7 @@ return packer.startup(function(use)
   }
   use { "preservim/nerdtree" }
   use { "itchyny/lightline.vim" }
-  use { "kyazdani43/nvim-web-devicons" }
+  use { "nvim-tree/nvim-web-devicons" }
   
   if packer_bootstrap then
     require('packer').sync()
