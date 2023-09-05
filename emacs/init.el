@@ -50,8 +50,12 @@
 
 ;; Set Theme
 (use-package catppuccin-theme
-  :ensure t
-  :init (load-theme 'catppuccin :no-config))
+  :ensure t)
+
+;; Only load the theme when emacs is run in GUI
+(when (display-graphic-p)
+  (load-theme 'catppuccin :no-config))
+
 
 ;;(load-theme 'catppuccin :no-config)
 (use-package doom-modeline
