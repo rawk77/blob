@@ -40,7 +40,7 @@
  '(custom-safe-themes
    '("02f57ef0a20b7f61adce51445b68b2a7e832648ce2e7efb19d217b6454c1b644" "f5e666fba0ded6ae9be004314ecf5f7feb605cdb84711b5c5ffd81acfb831183" "8721f7ee8cd0c2e56d23f757b44c39c249a58c60d33194fe546659dabc69eebd" default))
  '(package-selected-packages
-   '(doom-themes marginalia catppuccin-theme doom-modeline dracula-theme ##)))
+   '(vertico doom-themes marginalia catppuccin-theme doom-modeline dracula-theme ##)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -48,9 +48,15 @@
  ;; If there is more than one, they won't work right.
  )
 
-(load-theme 'catppuccin :no-config)
-(require 'doom-modeline)
-(doom-modeline-mode 1)
+;; Set Theme
+(use-package catppuccin-theme
+  :ensure t
+  :init (load-theme 'catppuccin :no-config))
+
+;;(load-theme 'catppuccin :no-config)
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1))
 
 ;; Enable vertico
 (use-package vertico
