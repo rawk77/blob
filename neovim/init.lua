@@ -26,62 +26,63 @@ keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
--- Nerdtree key binding
-keymap("n", "<C-f>", ":NERDTreeToggle<CR>", opts)
+-- NeoTree keymap
+keymap("n", "<C-f>", ":Neotree toggle<CR>", opts)
 
--- Custom quality of life stuff
--- not working... escape error somewhere
--- keymap("n", "<leader>tr", ":let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>", opts)
-
-
--- Plugin Manager setup
--- Automatically install Packer
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
-end
-
-local packer_bootstrap = ensure_packer()
-
--- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
-if not status_ok then
-  return
-end
-
--- Have packer use a popup window
-packer.init {
-  display = {
-    open_fn = function()
-      return require("packer.util").float { border = "rounded" }
-    end,
-  },
-  git = {
-    clone_timeout = 300, -- Timeout, in seconds, for git clones
-  },
-}
-
-
--- Install your plugins here
-return packer.startup(function(use)
-  -- My plugins here
-  use { "wbthomason/packer.nvim" } -- Have packer manage itself
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.0',
-    -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} }
+-- Lazy Package Manager
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
   }
-  use { "preservim/nerdtree" }
-  use { "itchyny/lightline.vim" }
-  use { "nvim-tree/nvim-web-devicons" }
-  
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Install Plugins
+require('lazy').setup({
+
+    -- Telescope
+    {
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make',
+        cond = function()
+          return vim.fn.executable 'make' == 1
+        end,
+      },
+    },
+    },
+
+    -- NeoTree
+    {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    },
+    },
+
+    -- lualine as statusline
+    {
+    "nvim-lualine/lualine.nvim",
+    opts = {
+        options = {
+            theme = 'onedark'
+        }
+    },
+    },
+
+    -- "gc" to comment visual regions/lines
+    { 'numToStr/Comment.nvim', opts = {} },
+})
